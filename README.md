@@ -16,6 +16,7 @@ Configuration
 Change the defaults of sonata admin to use the templates provided by the bundle.
 On config.yml
 
+```
 sonata_admin:
     templates:
         user_block:           ZorbusAdminThemeBundle:Core:user_block.html.twig
@@ -103,6 +104,7 @@ sonata_doctrine_orm_admin:
                 percent:    ZorbusAdminThemeBundle:CRUD:base_percent.html.twig
                 choice:     ZorbusAdminThemeBundle:CRUD:show_choice.html.twig
                 url:        ZorbusAdminThemeBundle:CRUD:show_url.html.twig
+```
 
 For last, install the assets:
 
