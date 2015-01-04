@@ -1,0 +1,27 @@
+{% macro render_groups(admin, form, groups, has_tab) %}
+    {% if has_tab %}<div class="row">{% endif %}
+    {% for code in groups %}
+        {% set form_group = admin.formgroups[code] %}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {{ admin.trans(form_group.name, {}, form_group.translation_domain) }}
+            </div>
+            <div class="panel-body">
+                <div class="sonata-ba-collapsed-fields">
+                    {% if form_group.description != false %}
+                        <p class="help-block">{{ form_group.description|raw }}</p>
+                    {% endif %}
+
+                    {% for field_name in form_group.fields %}
+                        {% if admin.formfielddescriptions[field_name] is defined %}
+                            {{ form_row(form[field_name])}}
+                        {% endif %}
+                    {% else %}
+                        <em class="alert alert-warning">{{ 'message_form_group_empty'|trans({}, 'SonataAdminBundle') }}</em>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    {% if has_tab %}</div>{% endif %}
+{% endmacro %}

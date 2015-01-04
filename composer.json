@@ -1,0 +1,29 @@
+{
+    "name": "zorbus/admin-theme-bundle",
+    "type": "symfony-bundle",
+    "description": "A theme for the Sonata Admin Bundle",
+    "keywords": ["theme", "bundle", "Symfony2", "block", "page", "sonata", "admin"],
+    "homepage": "https://github.com/titomiguelcosta",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tito Miguel Costa",
+            "email": "zorbus@titomiguelcosta.com",
+            "homepage": "http://www.titomiguelcosta.com/"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "sonata-project/admin-bundle": "~2.3",
+        "sonata-project/doctrine-orm-admin-bundle": "~2.3"
+    },
+    "autoload": {
+        "psr-0": { "Zorbus\\AdminThemeBundle": "" }
+    },
+    "target-dir": "Zorbus/AdminThemeBundle",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.0.*-dev"
+        }
+    }
+}

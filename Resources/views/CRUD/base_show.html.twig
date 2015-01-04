@@ -1,0 +1,56 @@
+{#
+
+This file is part of the Sonata package.
+
+(c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+
+{% extends base_template %}
+
+{% block actions %}
+    <li>{% include 'ZorbusAdminThemeBundle:Button:edit_button.html.twig' %}</li>
+    <li>{% include 'ZorbusAdminThemeBundle:Button:history_button.html.twig' %}</li>
+    <li>{% include 'ZorbusAdminThemeBundle:Button:list_button.html.twig' %}</li>
+    <li>{% include 'ZorbusAdminThemeBundle:Button:create_button.html.twig' %}</li>
+{% endblock %}
+
+{% block tab_menu %}{{ knp_menu_render(admin.sidemenu(action), {'currentClass' : 'active', 'template': admin_pool.getTemplate('tab_menu_template')}, 'twig') }}{% endblock %}
+
+{% block show %}
+    <div class="sonata-ba-view">
+
+        {{ sonata_block_render_event('sonata.admin.show.top', { 'admin': admin, 'object': object }) }}
+
+        {% for name, view_group in admin.showgroups %}
+            <div class="panel panel-default">
+                {% if name %}
+                    <div class="panel-heading">
+                        {% block show_title %}
+                            {{ admin.trans(name) }}
+                        {% endblock %}
+                    </div>
+                {% endif %}
+
+                <div class="panel-body">
+                    <table class="table table-hover table-bordered">
+                    {% for field_name in view_group.fields %}
+                        {% block show_field %}
+                            <tr class="sonata-ba-view-container">
+                                {% if elements[field_name] is defined %}
+                                    {{ elements[field_name]|render_view_element(object) }}
+                                {% endif %}
+                            </tr>
+                        {% endblock %}
+                    {% endfor %}
+                    </table>
+                </div>
+            </div>
+        {% endfor %}
+
+        {{ sonata_block_render_event('sonata.admin.show.bottom', { 'admin': admin, 'object': object }) }}
+    </div>
+{% endblock %}
