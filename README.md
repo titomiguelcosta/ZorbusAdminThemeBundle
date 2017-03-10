@@ -8,7 +8,17 @@ This theme is inspired on the [SB Admin 2](http://startbootstrap.com/template-ov
 Installation
 ------------
 
-Add the bundle to composer.json and enable it on the AppKernel.
+Install this bundle by adding the following to your `composer.json`:
+
+```json
+"require": {
+    "zorbus/admin-theme-bundle": "dev-master"
+}
+```
+
+Or run `composer require zorbus/admin-theme-bundle` in your project's root directory.
+
+Then, add the `ZorbusAdminThemeBundle` class reference to your AppKernel file.
 
 Configuration
 -------------
